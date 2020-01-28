@@ -1,0 +1,18 @@
+{
+  "name": "IDGenerator",
+  "version": "1.0.0",
+  "description": "ID Generator app",
+  "main": "../../id-generator/app.js",
+  "author": "Majestic.Cloud",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^3.4.0"
+  },
+  "scripts": {
+    "test": "../dependencies/nodejs/node_modules/.bin/mocha ../../id-generator/tests/unit"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}

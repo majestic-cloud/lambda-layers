@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  layers
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  IDGenerator:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: id-generator/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Layers:
+        - !Ref IDGeneratorLayers
+  IDGeneratorLayers:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: IDgenerator-dependencies
+      Description: Dependencies for id generator
+      ContentUri: dependencies/
+      CompatibleRuntimes:
+        - nodejs12.x
+      LicenseInfo: 'MIT'
+      RetentionPolicy: Retain
+
+Outputs:
+  IDGenerator:
+    Description: "Lambda Function ARN"
+    Value: !GetAtt IDGenerator.Arn
